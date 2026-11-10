@@ -40,7 +40,9 @@ The project follows a research-first workflow. Mathematical sophistication is no
 
 ## Research documentation
 
-The first research note compares currency-factor return models with multi-pair cointegration, explains their distinct statistical meanings, and defines a controlled empirical study: [Research Note 01 — Currency-Factor Models vs. Multi-Pair Cointegration](docs/research/01-factor-models-vs-cointegration.md).
+- [Research Note 01 — Currency-Factor Models vs. Multi-Pair Cointegration](docs/research/01-factor-models-vs-cointegration.md)
+- [Research Note 02 — G10 Currency Graph and Market-Data Contract](docs/research/02-g10-currency-graph-and-data-contract.md)
+- [Research Protocol 01 — Descriptive G10 Panel and Factor Diagnostics](docs/research/03-descriptive-factor-study-protocol.md)
 
 ## Research scope
 
