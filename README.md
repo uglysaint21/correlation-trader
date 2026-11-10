@@ -38,6 +38,10 @@ The project follows a research-first workflow. Mathematical sophistication is no
 9. **Reproducibility.** Record data provenance, configuration, code version, model parameters, random seeds and experiment results.
 10. **No profitability claims without evidence.** Backtests are research results, not guarantees of future performance.
 
+## Research documentation
+
+The first research note compares currency-factor return models with multi-pair cointegration, explains their distinct statistical meanings, and defines a controlled empirical study: [Research Note 01 — Currency-Factor Models vs. Multi-Pair Cointegration](docs/research/01-factor-models-vs-cointegration.md).
+
 ## Research scope
 
 The techniques below are candidates for investigation, not a commitment to use all of them.
