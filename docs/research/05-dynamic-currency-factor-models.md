@@ -313,6 +313,51 @@ This is a graph-algebra result for that stated 37-edge list, not confirmation th
 
 The calculation used exact integer incidence entries and SymPy 1.14.0. It verified \(B\mathbf1=0\), rank 9, and an orthonormal ten-by-nine Helmert contrast basis \(C\) with \(C^\top C=I\), \(C^\top\mathbf1=0\), and \(\operatorname{rank}(BC)=9\). This is a finite algebraic check for the listed graph only.
 
+The 37 normalized edges used were:
+
+`EURUSD, GBPUSD, USDJPY, AUDUSD, NZDUSD, USDCAD, USDCHF, EURGBP, EURJPY, EURCHF, GBPJPY, GBPCHF, AUDCAD, AUDCHF, AUDJPY, AUDNZD, CADCHF, CADJPY, CHFJPY, EURAUD, EURCAD, EURNZD, GBPAUD, GBPCAD, GBPNZD, NZDCAD, NZDCHF, NZDJPY, EURNOK, EURSEK, GBPNOK, GBPSEK, NOKJPY, NOKSEK, SEKJPY, USDNOK, USDSEK`.
+
+A minimal reproduction of the exact-rank and contrast-basis assertions is:
+
+```python
+import sympy as sp
+
+currencies = ["AUD", "CAD", "CHF", "EUR", "GBP",
+              "JPY", "NOK", "NZD", "SEK", "USD"]
+pairs = """EURUSD GBPUSD USDJPY AUDUSD NZDUSD USDCAD USDCHF
+EURGBP EURJPY EURCHF GBPJPY GBPCHF AUDCAD AUDCHF AUDJPY
+AUDNZD CADCHF CADJPY CHFJPY EURAUD EURCAD EURNZD GBPAUD
+GBPCAD GBPNZD NZDCAD NZDCHF NZDJPY EURNOK EURSEK GBPNOK
+GBPSEK NOKJPY NOKSEK SEKJPY USDNOK USDSEK""".split()
+
+B = sp.zeros(len(pairs), len(currencies))
+for row, pair in enumerate(pairs):
+    base, quote = pair[:3], pair[3:]
+    B[row, currencies.index(base)] = 1
+    B[row, currencies.index(quote)] = -1
+
+# Deterministic Helmert contrast basis (10 x 9).
+C = sp.zeros(len(currencies), len(currencies) - 1)
+for j in range(len(currencies) - 1):
+    d = sp.sqrt((j + 1) * (j + 2))
+    for i in range(j + 1):
+        C[i, j] = 1 / d
+    C[j + 1, j] = -(j + 1) / d
+
+assert len(pairs) == 37
+assert B * sp.ones(len(currencies), 1) == sp.zeros(37, 1)
+assert B.rank() == 9
+assert C.T * C == sp.eye(9)
+assert C.T * sp.ones(10, 1) == sp.zeros(9, 1)
+assert (B * C).rank() == 9
+print({"edges": len(pairs), "rank": B.rank(),
+       "cycle_dimension": len(pairs) - B.rank()})
+```
+
+Expected output: `{'edges': 37, 'rank': 9, 'cycle_dimension': 28}`.
+
+This reproduction verifies only the algebra of the stated edge list. It does not verify current FXPesa account availability, historical data, quote synchronization or any forecasting property.
+
 ---
 
 ## 7. Observation covariance and residual interpretation
