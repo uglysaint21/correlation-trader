@@ -44,6 +44,8 @@ The project follows a research-first workflow. Mathematical sophistication is no
 - [Research Note 02 — G10 Currency Graph and Market-Data Contract](docs/research/02-g10-currency-graph-and-data-contract.md)
 - [Research Protocol 01 — Descriptive G10 Panel and Factor Diagnostics](docs/research/03-descriptive-factor-study-protocol.md)
 - [Research Note 04 — Integrated Quantitative Strategy Research Agenda](docs/research/04-integrated-quantitative-strategy-research-agenda.md)
+- [Research Note 05 — Dynamic Currency-Factor Models](docs/research/05-dynamic-currency-factor-models.md)
+- [Research Protocol 02 — Dynamic Factor Model Estimation and Forecast Evaluation](docs/research/06-dynamic-factor-model-estimation-protocol.md)
 
 ## Research scope
 
@@ -192,8 +194,8 @@ Work proceeds through explicit gates. Implementation of the autonomous trading s
 The detailed, staged programme is in [Research Note 04](docs/research/04-integrated-quantitative-strategy-research-agenda.md). The next priorities are:
 
 1. Complete the FXPesa MT5 symbol, history, bid/ask and contract-specification audit.
-2. Execute Research Protocol 01 before predictive strategy optimization.
-3. Compare constrained static currency factors with an identified state-space/Kalman model; keep the currency-incidence loadings fixed by quote convention.
+2. Complete Research Protocol 01 and the actual FXPesa MT5 data audit before predictive strategy optimization.
+3. Execute Research Protocol 02: compare static constrained GLS with the nested Kalman state-space models in Research Note 05.
 4. Test factor-based conditional forecasting, cointegration/error correction and currency momentum as separate strategy families.
 5. Add filtered regime probabilities and probabilistic return forecasts only if they improve out-of-sample calibration and net results.
 6. Convert pair positions into comparable currency notionals; optimize and constrain portfolio risk at currency level.
