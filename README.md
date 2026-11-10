@@ -43,6 +43,7 @@ The project follows a research-first workflow. Mathematical sophistication is no
 - [Research Note 01 — Currency-Factor Models vs. Multi-Pair Cointegration](docs/research/01-factor-models-vs-cointegration.md)
 - [Research Note 02 — G10 Currency Graph and Market-Data Contract](docs/research/02-g10-currency-graph-and-data-contract.md)
 - [Research Protocol 01 — Descriptive G10 Panel and Factor Diagnostics](docs/research/03-descriptive-factor-study-protocol.md)
+- [Research Note 04 — Integrated Quantitative Strategy Research Agenda](docs/research/04-integrated-quantitative-strategy-research-agenda.md)
 
 ## Research scope
 
@@ -188,14 +189,18 @@ Work proceeds through explicit gates. Implementation of the autonomous trading s
 
 ### Immediate research priorities
 
-1. Establish a reliable representation of currency returns and shared currency factors.
-2. Compare factor residuals with pairwise cointegration opportunities.
-3. Specify robust relationship discovery, stability and multiple-testing controls.
-4. Evaluate static, rolling and Kalman-filter hedge-ratio estimators.
-5. Test OU-style spread models against simpler empirical alternatives.
-6. Define probability targets and calibration procedures for target-before-stop outcomes.
-7. Evaluate regime filters only against a baseline without a regime filter.
-8. Design a cost-aware, portfolio-level validation protocol.
+The detailed, staged programme is in [Research Note 04](docs/research/04-integrated-quantitative-strategy-research-agenda.md). The next priorities are:
+
+1. Complete the FXPesa MT5 symbol, history, bid/ask and contract-specification audit.
+2. Execute Research Protocol 01 before predictive strategy optimization.
+3. Compare constrained static currency factors with an identified state-space/Kalman model; keep the currency-incidence loadings fixed by quote convention.
+4. Test factor-based conditional forecasting, cointegration/error correction and currency momentum as separate strategy families.
+5. Add filtered regime probabilities and probabilistic return forecasts only if they improve out-of-sample calibration and net results.
+6. Convert pair positions into comparable currency notionals; optimize and constrain portfolio risk at currency level.
+7. Model executable bid/ask fills, commissions, financing, slippage and operational failure modes.
+8. Use chronological walk-forward testing, label-aware purging where horizons overlap, multiple-testing controls and a final untouched holdout.
+9. Combine strategies only after each has demonstrated independent out-of-sample value.
+10. Defer deep learning, reinforcement learning and live execution until simpler baselines pass the research gates.
 
 ## Repository status and planned structure
 
